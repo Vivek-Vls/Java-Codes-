@@ -1,0 +1,47 @@
+class Node{
+    
+    private Node[] link=new Node[10];
+    private boolean flag=false;
+
+    public boolean isContainsKey(char ch)
+    {
+        return link[ch-'0']!=null;
+    }
+    
+    public void put(char ch,Node node)
+    {
+        link[ch-'0']=node;
+    }
+    
+    public Node get(char ch)
+    {
+        return link[ch-'0'];
+    }
+    
+    public void setEnd()
+    {
+        flag=true;
+    }
+    public boolean getEnd()
+    {
+        return flag;
+    }
+}
+class Trie{
+    
+    Node root=new Node();
+    
+    public void insert(String word)
+    {
+        Node temp=root;
+         for(int i=0;i<word.length();i++)
+         {
+            char ch=word.charAt(i);
+            if(!temp.isContainsKey(ch))
+                temp.put(ch,new Node());
+            temp=temp.get(ch);
+         }
+         temp.setEnd();
+    }
+   
+}
