@@ -8,12 +8,12 @@ class Node{
         return link[ch-'0']!=null;
     }
     
-    public void put(char ch,Node node)
+    public void add(char ch,Node node)
     {
         link[ch-'0']=node;
     }
     
-    public Node get(char ch)
+    public Node getLink(char ch)
     {
         return link[ch-'0'];
     }
