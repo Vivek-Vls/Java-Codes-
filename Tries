@@ -1,6 +1,6 @@
 class Node{
     
-    private Node[] link=new Node[10];
+    private Node[] link=new Node[26];
     private boolean flag=false;
 
     public boolean isContainsKey(char ch)
