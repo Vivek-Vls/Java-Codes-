@@ -5,17 +5,17 @@ class Node{
 
     public boolean isContainsKey(char ch)
     {
-        return link[ch-'0']!=null;
+        return link[ch-'a']!=null;
     }
     
     public void add(char ch,Node node)
     {
-        link[ch-'0']=node;
+        link[ch-'a']=node;
     }
     
     public Node getLink(char ch)
     {
-        return link[ch-'0'];
+        return link[ch-'a'];
     }
     
     public void setEnd()
