@@ -1,0 +1,64 @@
+class Node{
+    private Node link[]=new Node[2];
+    
+    public boolean isContainsKey(int i)
+    {   
+        return link[i]!=null;
+    }
+    
+    public Node getLink(int i)
+    {
+        return link[i];
+    }
+    
+    public void add(int i,Node node)
+    {  
+       link[i]=node;
+    }
+}
+class Trie{
+    private Node root=new Node();
+    public void insert(int x)
+    {
+        int a=0;
+        Node temp=root;
+        for(int i=31;i>=0;i--)
+        {
+            a=1&x>>i;
+            if(!temp.isContainsKey(a))
+                temp.add(a,new Node());
+            temp=temp.getLink(a);
+        }
+    }
+    
+    public int getMax(int x)
+    {  int a=0,res=0,n;
+        Node temp=root;
+        for(int i=31;i>=0;i--)
+        {
+            a=x>>i&1;
+            if(temp.isContainsKey(1-a))
+            {
+                 res |=(1<<i);
+                 temp=temp.getLink(1-a);
+            }
+           else
+            temp=temp.getLink(a);
+        }
+        return res;
+    }
+    
+}
+class Solution {
+    public int findMaximumXOR(int[] nums) {
+        Trie root=new Trie();
+        for(int i:nums)
+            root.insert(i);
+        int max=0;
+        for(int i:nums)
+        {
+          max=Math.max(max,root.getMax(i));
+        }
+        return max;
+    }
+}
